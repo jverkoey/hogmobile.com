@@ -102,7 +102,6 @@ struct Home: View {
       .textAlignment(.center)
     }
     .padding(.vertical, 32)
-    .padding(.vertical, 96, condition: .startingAt(.medium))
   }
 
   @ViewBuilder
