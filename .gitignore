@@ -1,5 +1,6 @@
 # Slipstream site output
-site/
+site/**/*.html
+site/css/main.css
 
 # Standard Swift package
 .DS_Store

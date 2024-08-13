@@ -1,14 +1,13 @@
 import Foundation
 import Slipstream
 
-struct HelloWorld: View {
-  var body: some View {
-    Text("Hello, world!")
-  }
+extension Condition {
+  static var mobileOnly: Condition { Condition.within(Breakpoint.small..<Breakpoint.medium) }
+  static var desktop: Condition { Condition.startingAt(.medium) }
 }
 
 let sitemap: Sitemap = [
-  "index.html": HelloWorld()
+  "index.html": Home()
 ]
 
 // Assumes this file is located in a Sources/ sub-directory of a Swift package.

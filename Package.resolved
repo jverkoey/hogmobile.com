@@ -1,5 +1,5 @@
 {
-  "originHash" : "f926b4f00ee6240dc5164f1f00ba2c11f85778a530a8103d8f3e9f1de638c9a2",
+  "originHash" : "a46d0a2ef97c404ec3b526ae68a6f3fdcbae1e6edaad654c762667432eaaa65c",
   "pins" : [
     {
       "identity" : "slipstream",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/jverkoey/slipstream.git",
       "state" : {
         "branch" : "main",
-        "revision" : "ce4aea0772b44ecf4eeca70d8c31d56c26be4414"
+        "revision" : "c603eff8211e0ff6706472c1ccfbbf1ebc35b8fe"
       }
     },
     {
