@@ -24,28 +24,28 @@ struct Home: View {
       darkModeBackgroundColor: Color(.sky, darkness: 950)
     ) {
       Div {
+        content
+          .frame(minHeight: 500)
+          .className("h-[75lvh]")
+          .className("min-h-[350pt]")
+          .className("md:min-h-[400pt]")
+
         // The ground
-        Div {}
-        .position(.absolute)
+        Div {
+          // The hog mobile
+          Div {
+            hogmobile
+          }
+          .position(.absolute)
+          .placement(left: 0.5, top: 0)
+          .offset(x: -0.5, y: -0.5)
+        }
         .background(.gray, darkness: 400)
         .background(.gray, darkness: 700, condition: .dark)
-        .frame(width: .full, height: 0.333)
-        .placement(left: 0, bottom: 0)
-
-        // The hog mobile
-        Div {
-          hogmobile
-        }
-        .position(.absolute)
-        .placement(left: 0.5, bottom: 0.25)
-        .offset(x: -0.5)
-        .offset(y: 64, condition: .startingAt(.medium))
-
-        content
+        .frame(width: .full)
+        .className("h-[25lvh]")
+        .position(.relative)
       }
-      .frame(height: .lvh)
-      .frame(minHeight: 384, height: .screen, condition: .startingAt(.medium))
-      .position(.relative)
     }
   }
 
@@ -76,8 +76,17 @@ struct Home: View {
         .textColor(.rose, darkness: 500)
         .textColor(.rose, darkness: 400, condition: .dark)
 
+        Text("Please provide an email address and try again.")
+          .id("missing_email")
+          .fontWeight(.bold)
+          .fontDesign("rounded")
+          .textColor(.rose, darkness: 500)
+          .textColor(.rose, darkness: 400, condition: .dark)
+          .hidden()
+          .display(.block, condition: .init(state: .target))
+
         Form(method: .post, url: URL(string: "https://us-east1-hogmobile.cloudfunctions.net/collectEmails")) {
-          HStack(spacing: 32) {
+          ResponsiveStack(spacing: 32) {
             TextField("Email", type: .email, name: "email")
               .fontSize(.large)
               .padding(.vertical, 8)
@@ -108,6 +117,7 @@ struct Home: View {
             .cornerRadius(.extraLarge)
             .animation(.easeOut, condition: .active)
           }
+          .alignItems(.center)
           .margin(.top, 48, condition: .mobileOnly)
         }
       }

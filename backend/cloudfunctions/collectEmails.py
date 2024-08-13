@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import jsonify
+from flask import jsonify, redirect
 from google.cloud import storage
 from google.oauth2.service_account import Credentials
 
@@ -42,9 +42,9 @@ def capture_email(request):
         if request.is_json:
             return jsonify({"message": "Email captured successfully", "metadata": metadata}), 200
         else:
-            return redirect("https://hogmobile.com?registered=true")
+            return redirect("https://hogmobile.com/thank_you")
     else:
         if request.is_json:
             return jsonify({"message": "Invalid request, email not found"}), 400
         else:
-            return redirect("https://hogmobile.com?registered=false")
+            return redirect("https://hogmobile.com#missing_email")
