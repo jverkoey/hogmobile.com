@@ -39,6 +39,12 @@ def capture_email(request):
 
     if email:
         sheet.append_row([datetime.now().isoformat(), email])
-        return jsonify({"message": "Email captured successfully"}), 200
+        if request.is_json:
+            return jsonify({"message": "Email captured successfully", "metadata": metadata}), 200
+        else:
+            return redirect("https://hogmobile.com?registered=true")
     else:
-        return jsonify({"message": "Invalid request, email not found"}), 400
+        if request.is_json:
+            return jsonify({"message": "Invalid request, email not found"}), 400
+        else:
+            return redirect("https://hogmobile.com?registered=false")
