@@ -146,3 +146,14 @@
   animation: trajectory5 3.1s ease-in infinite, flyUp 3.1s ease-out infinite, explode 3.1s ease-out infinite;
   animation-delay: 0.7s;
 }
+
+@media (prefers-reduced-motion) {
+  .firework:nth-child(1),
+  .firework:nth-child(2),
+  .firework:nth-child(3),
+  .firework:nth-child(4),
+  .firework:nth-child(5) {
+    animation: none;
+    display: none;
+  }
+}

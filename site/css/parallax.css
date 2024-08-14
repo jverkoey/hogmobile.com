@@ -59,3 +59,33 @@
   width: 64px;
   height: 64px;
 }
+
+@media (prefers-reduced-motion) {
+  .shape:nth-child(1),
+  .shape:nth-child(2),
+  .shape:nth-child(3),
+  .shape:nth-child(4),
+  .shape:nth-child(5) {
+    animation: none;
+  }
+
+  .shape:nth-child(1) {
+    left: 20vw;
+  }
+
+  .shape:nth-child(2) {
+    left: 67vw;
+  }
+
+  .shape:nth-child(3) {
+    left: 42vw;
+  }
+
+  .shape:nth-child(4) {
+    left: 53vw;
+  }
+
+  .shape:nth-child(5) {
+    left: 72vw;
+  }
+}
