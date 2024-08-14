@@ -47,7 +47,7 @@ struct Page<Content: View>: View {
       Head {
         Charset(.utf8)
         Title(resolvedTitle)
-        Viewport.mobileFriendly
+        Viewport(width: .deviceWidth, initialScale: 1, viewportFit: .cover)
         if let description {
           Meta(.description, content: description)
         }
