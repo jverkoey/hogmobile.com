@@ -13,10 +13,10 @@
 
 @keyframes flyUp {
   0% {
-    top: 70%;
+    top: 80%;
   }
   100% {
-    top: 40%;
+    top: 55%;
   }
 }
 
