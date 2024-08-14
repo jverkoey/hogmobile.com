@@ -87,8 +87,8 @@ struct Scene<Content: View>: View {
           .placement(left: 0.5, top: 0)
           .offset(x: -0.5, y: -0.5)
         }
-        .background(.gray, darkness: 400)
-        .background(.gray, darkness: 700, condition: .dark)
+        .background(.slate, darkness: 400)
+        .background(.slate, darkness: 700, condition: .dark)
         .frame(width: .full)
         .className("h-[25lvh]")
         .position(.relative)
