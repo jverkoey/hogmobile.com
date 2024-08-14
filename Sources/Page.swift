@@ -32,21 +32,35 @@ struct Page<Content: View>: View {
     self.content = content
   }
 
+  private let siteName: String = "Hog Mobile: PostHog analytics on the go!"
+
+  private var resolvedTitle: String {
+    if let title {
+      return "\(title) — \(siteName)"
+    } else {
+      return siteName
+    }
+  }
+
   var body: some View {
     HTML {
       Head {
         Charset(.utf8)
-        if let title {
-          Title("\(title) — Hog Mobile: PostHog analytics on the go!")
-        } else {
-          Title("Hog Mobile: PostHog analytics on the go!")
-        }
+        Title(resolvedTitle)
         Viewport.mobileFriendly
         if let description {
           Meta(.description, content: description)
         }
         Meta(.generator, content: "Slipstream")
         Meta(.author, content: "Jeff Verkoeyen")
+        Meta("og:title", content: resolvedTitle)
+        if let description {
+          Meta("og:description", content: description)
+        }
+        Meta("og:image", content: "https://hogmobile.com/gfx/social-banner.png")
+        Meta("og:url", content: "https://hogmobile.com/\(path)")
+        Meta("og:type", content: "website")
+        Meta("og:site_name", content: siteName)
         Stylesheet(URL(string: "/css/main.css"))
         for stylesheet in additionalStylesheets {
           Stylesheet(stylesheet)
