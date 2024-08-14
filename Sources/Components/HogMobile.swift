@@ -13,6 +13,8 @@ struct HogMobile: View {
         HogImage(URL(string: "/gfx/hogmobile-light-front-wheels.png")).className("animate-bounce-wheels")
         HogImage(URL(string: "/gfx/hogmobile-light-paw.png")).className("animate-bounce-paw")
         HogImage(URL(string: "/gfx/hogmobile-light-headlights.png")).className("animate-bounce-car")
+          .className("active:opacity-0")
+          .animation(.easeInOut)
       }
       .hidden(condition: .dark)
 
@@ -24,6 +26,8 @@ struct HogMobile: View {
         HogImage(URL(string: "/gfx/hogmobile-dark-front-wheels.png")).className("animate-bounce-wheels")
         HogImage(URL(string: "/gfx/hogmobile-dark-paw.png")).className("animate-bounce-paw")
         HogImage(URL(string: "/gfx/hogmobile-dark-headlights.png")).className("animate-bounce-car")
+          .className("active:opacity-0")
+          .animation(.easeInOut)
       }
       .hidden()
       .display(.block, condition: .dark)
