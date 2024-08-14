@@ -6,7 +6,7 @@ struct ThankYou: View {
   var body: some View {
     Scene(
       path: "/thank-you/",
-      description: "PostHog analytics natively on iOS",
+      description: "Thank you for signing up for the Hog Mobile beta!",
       showsFireworks: true
     ) {
       VStack(alignment: .center, spacing: 32) {

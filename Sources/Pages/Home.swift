@@ -6,7 +6,7 @@ struct Home: View {
   var body: some View {
     Scene(
       path: "/",
-      description: "PostHog analytics natively on iOS"
+      description: "Sign up for the beta"
     ) {
       VStack(alignment: .center, spacing: 24) {
         Text("Please provide an email address and try again.")
