@@ -109,6 +109,7 @@ struct Scene<Content: View>: View {
           .background(.slate, darkness: 400)
           .background(.slate, darkness: 700, condition: .dark)
         }
+        .className("overflow-x-clip")
         .frame(width: .full)
         .className("h-[25lvh]")
         .position(.relative)

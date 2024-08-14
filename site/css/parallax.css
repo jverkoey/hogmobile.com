@@ -6,16 +6,16 @@
 
 /* Shape Styles */
 .circle {
-  transform: translateX(100vw);
+  left: 100vw;
   border-radius: 50%;
 }
 
 @keyframes scroll {
   0% {
-    transform: translateX(100vw);
+    left: 100vw;
   }
   100% {
-    transform: translateX(-192px);
+    left: -192px;
   }
 }
 
