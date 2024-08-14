@@ -70,7 +70,14 @@ posthog.init('phc_XukeUB7VPJ1qEPzLpsW6HEjDgfLvzviQTqjODbDZES3',{api_host:'https:
               }
               .modifier(ClassModifier(add: "cursor-pointer"))
               VStack(alignment: .end) {
-                Text("Copyright © \(Calendar.current.component(.year, from: Date())) fearless design, LLC")
+                Text {
+                  DOMString("Copyright © \(Calendar.current.component(.year, from: Date())) ")
+                  Link("fearless design, LLC", destination: URL(string: "https://featherless.design"))
+                    .textColor(.rose, darkness: 600)
+                    .textColor(.rose, darkness: 400, condition: .dark)
+                    .fontWeight(600)
+                    .underline(condition: .hover)
+                }
                 Text {
                   Link("PostHog", destination: URL(string: "https://posthog.com"))
                     .textColor(.rose, darkness: 600)

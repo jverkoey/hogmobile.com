@@ -9,7 +9,6 @@
   0 0 10px rgba(255, 0, 0, 0.5),
   0 0 20px rgba(0, 255, 0, 0.5),
   0 0 40px rgba(0, 0, 255, 0.5);
-  animation: flyUp 2.5s ease-out infinite, explode 2.5s ease-out infinite;
 }
 
 @keyframes flyUp {
@@ -19,6 +18,31 @@
   100% {
     top: 40%;
   }
+}
+
+@keyframes trajectory1 {
+  0% {   left: 30%; }
+  100% { left: 35%; }
+}
+
+@keyframes trajectory2 {
+  0% {   left: 50%; }
+  100% { left: 43%; }
+}
+
+@keyframes trajectory3 {
+  0% {   left: 36%; }
+  100% { left: 36%; }
+}
+
+@keyframes trajectory4 {
+  0% {   left: 46%; }
+  100% { left: 52%; }
+}
+
+@keyframes trajectory5 {
+  0% {   left: 70%; }
+  100% { left: 62%; }
 }
 
 @keyframes explode {
@@ -47,6 +71,7 @@
 
 /* Firework colors */
 .firework:nth-child(1) {
+  top: -50pt;
   left: 30%;
   background: radial-gradient(circle, #ff4e50, #ff4e50 25%, transparent);
   box-shadow:
@@ -55,10 +80,12 @@
     0 0 45px #ff4e50,
     0 0 60px #ff4e50;
   border-radius: 50%;
+  animation: trajectory1 2.7s ease-in infinite, flyUp 2.7s ease-out infinite, explode 2.7s ease-out infinite;
   animation-delay: 1.3s;
 }
 
 .firework:nth-child(2) {
+  top: -50pt;
   left: 50%;
   width: 8px;
   height: 8px;
@@ -70,10 +97,12 @@
     0 0 25px #1dd1a1;
   border-radius: 30% 70% 50% 50%;
   transform: rotate(45deg);
+  animation: trajectory2 2.5s ease-in infinite, flyUp 2.5s ease-out infinite, explode 2.5s ease-out infinite;
   animation-delay: 0.3s;
 }
 
 .firework:nth-child(3) {
+  top: -50pt;
   left: 36%;
   background: radial-gradient(circle, #54a0ff, #54a0ff 25%, transparent);
   box-shadow:
@@ -83,10 +112,12 @@
     0 0 50px #54a0ff,
     0 0 70px #54a0ff;
   border-radius: 50%;
+  animation: trajectory3 2.9s ease-in infinite, flyUp 2.9s ease-out infinite, explode 2.9s ease-out infinite;
   animation-delay: 1.7s;
 }
 
 .firework:nth-child(4) {
+  top: -50pt;
   left: 46%;
   width: 12px;
   height: 12px;
@@ -98,10 +129,11 @@
     0 0 60px #ff9ff3;
   border-radius: 50% 50% 30% 70%;
   transform: rotate(-30deg);
-  animation-delay: 1.1s;
+  animation: trajectory4 2.2s ease-in infinite, flyUp 2.2s ease-out infinite, explode 2.2s ease-out infinite;
 }
 
 .firework:nth-child(5) {
+  top: -50pt;
   left: 70%;
   background: radial-gradient(circle, #feca57, #feca57 25%, transparent);
   box-shadow:
@@ -111,5 +143,6 @@
     0 0 55px #feca57;
   border-radius: 70% 30% 50% 50%;
   transform: rotate(60deg);
+  animation: trajectory5 3.1s ease-in infinite, flyUp 3.1s ease-out infinite, explode 3.1s ease-out infinite;
   animation-delay: 0.7s;
 }

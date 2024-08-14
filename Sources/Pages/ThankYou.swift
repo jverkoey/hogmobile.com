@@ -18,6 +18,7 @@ struct ThankYou: View {
           .textColor(.rose, darkness: 500)
           .textColor(.rose, darkness: 400, condition: .dark)
         Paragraph("You'll get an email when Hog Mobile is ready to test.")
+          .padding(.horizontal, 64, condition: .mobileOnly)
           .fontSize(.large)
           .fontWeight(.bold)
           .fontDesign("rounded")
