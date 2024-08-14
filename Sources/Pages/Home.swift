@@ -2,162 +2,58 @@ import Foundation
 
 import Slipstream
 
-struct HogImage: View {
-  let url: URL?
-
-  init(_ url: URL?) {
-    self.url = url
-  }
-
-  var body: some View {
-    Image(url)
-      .position(.absolute)
-  }
-}
-
 struct Home: View {
   var body: some View {
-    Page(
+    Scene(
       path: "/",
-      description: "PostHog analytics natively on iOS",
-      backgroundColor: Color(.sky, darkness: 100),
-      darkModeBackgroundColor: Color(.sky, darkness: 950)
+      description: "PostHog analytics natively on iOS"
     ) {
-      Div {
-        content
-          .frame(minHeight: 500)
-          .className("h-[75lvh]")
-          .className("min-h-[350pt]")
-          .className("md:min-h-[450pt]")
-
-        // The ground
-        Div {
-          // The hog mobile
-          Div {
-            hogmobile
-          }
-          .position(.absolute)
-          .placement(left: 0.5, top: 0)
-          .offset(x: -0.5, y: -0.5)
-        }
-        .background(.gray, darkness: 400)
-        .background(.gray, darkness: 700, condition: .dark)
-        .frame(width: .full)
-        .className("h-[25lvh]")
-        .position(.relative)
-      }
-    }
-  }
-
-  @ViewBuilder
-  private var content: some View {
-    Container {
-      VStack(alignment: .center, spacing: 16) {
-        H1("Hog Mobile")
-          .fontSize(.sixXLarge)
-          .fontSize(.nineXLarge, condition: .startingAt(.medium))
-          .fontWeight(.black)
+      VStack(alignment: .center, spacing: 24) {
+        Text("Please provide an email address and try again.")
+          .id("missing_email")
+          .fontWeight(.bold)
           .fontDesign("rounded")
           .textColor(.rose, darkness: 500)
           .textColor(.rose, darkness: 400, condition: .dark)
-          .className("text-extrude shadow-rose-900")
-          .className("md:text-extrude-lg")
-          .fontLeading(.tight)
+          .hidden()
+          .display(.block, condition: .init(state: .target))
 
-        Paragraph {
-          Link("PostHog", destination: URL(string: "https://posthog.com"))
-            .underline(condition: .hover)
-          DOMString(" analytics on the go!")
-        }
-        .fontSize(.extraExtraLarge)
-        .fontSize(.fiveXLarge, condition: .startingAt(.medium))
-        .fontWeight(.black)
-        .fontDesign("rounded")
-        .textColor(.rose, darkness: 500)
-        .textColor(.rose, darkness: 400, condition: .dark)
+        Form(method: .post, url: URL(string: "https://us-east1-hogmobile.cloudfunctions.net/collectEmails")) {
+          ResponsiveStack(spacing: 32) {
+            TextField("Email", type: .email, name: "email")
+              .fontSize(.large)
+              .padding(.vertical, 8)
+              .padding(.horizontal, 16)
+              .outline(style: .none, condition: .focus)
+              .ring(Color(.rose, darkness: 400), width: 4, condition: .focus)
+              .cornerRadius(.extraLarge)
+              .id("email")
 
-        VStack(alignment: .center, spacing: 24) {
-          Text("Please provide an email address and try again.")
-            .id("missing_email")
+            Button(type: .submit) {
+              Span("Sign up for the beta")
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .display(.block)
+                .background(.rose, darkness: 500)
+                .background(.rose, darkness: 400, condition: .dark)
+                .offset(y: -8)
+                .offset(y: -6, condition: .hover)
+                .offset(y: -2, condition: .active)
+                .animation(.easeInOut, condition: .hover + .active)
+                .cornerRadius(.extraLarge)
+            }
+            .fontSize(.large)
             .fontWeight(.bold)
             .fontDesign("rounded")
-            .textColor(.rose, darkness: 500)
-            .textColor(.rose, darkness: 400, condition: .dark)
-            .hidden()
-            .display(.block, condition: .init(state: .target))
-
-          Form(method: .post, url: URL(string: "https://us-east1-hogmobile.cloudfunctions.net/collectEmails")) {
-            ResponsiveStack(spacing: 32) {
-              TextField("Email", type: .email, name: "email")
-                .fontSize(.large)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .outline(style: .none, condition: .focus)
-                .ring(Color(.rose, darkness: 400), width: 4, condition: .focus)
-                .cornerRadius(.extraLarge)
-                .id("email")
-
-              Button(type: .submit) {
-                Span("Sign up for the beta")
-                  .padding(.horizontal, 16)
-                  .padding(.vertical, 8)
-                  .display(.block)
-                  .background(.rose, darkness: 500)
-                  .background(.rose, darkness: 400, condition: .dark)
-                  .offset(y: -8)
-                  .offset(y: -6, condition: .hover)
-                  .offset(y: -2, condition: .active)
-                  .animation(.easeInOut, condition: .hover + .active)
-                  .cornerRadius(.extraLarge)
-              }
-              .fontSize(.large)
-              .fontWeight(.bold)
-              .fontDesign("rounded")
-              .textColor(.white)
-              .background(.rose, darkness: 900)
-              .cornerRadius(.extraLarge)
-              .animation(.easeOut, condition: .active)
-            }
-            .alignItems(.center)
-            .margin(.top, 48, condition: .mobileOnly)
+            .textColor(.white)
+            .background(.rose, darkness: 900)
+            .cornerRadius(.extraLarge)
+            .animation(.easeOut, condition: .active)
           }
+          .alignItems(.center)
+          .margin(.top, 48, condition: .mobileOnly)
         }
       }
-      .flexGap(.y, width: 48, condition: .startingAt(.medium))
-      .textAlignment(.center)
     }
-    .padding(.vertical, 32)
-  }
-
-  @ViewBuilder
-  private var hogmobile: some View {
-    Div {
-      Div {
-        HogImage(URL(string: "/gfx/hogmobile-light-shadow.png"))
-        HogImage(URL(string: "/gfx/hogmobile-light-hog.png")).className("animate-bounce-hog")
-        HogImage(URL(string: "/gfx/hogmobile-light-rear-wheels.png")).className("animate-bounce-wheels")
-        HogImage(URL(string: "/gfx/hogmobile-light-car.png")).className("animate-bounce-car")
-        HogImage(URL(string: "/gfx/hogmobile-light-front-wheels.png")).className("animate-bounce-wheels")
-        HogImage(URL(string: "/gfx/hogmobile-light-paw.png")).className("animate-bounce-paw")
-        HogImage(URL(string: "/gfx/hogmobile-light-headlights.png")).className("animate-bounce-car")
-      }
-      .hidden(condition: .dark)
-
-      Div {
-        HogImage(URL(string: "/gfx/hogmobile-dark-shadow.png"))
-        HogImage(URL(string: "/gfx/hogmobile-dark-hog.png")).className("animate-bounce-hog")
-        HogImage(URL(string: "/gfx/hogmobile-dark-rear-wheels.png")).className("animate-bounce-wheels")
-        HogImage(URL(string: "/gfx/hogmobile-dark-car.png")).className("animate-bounce-car")
-        HogImage(URL(string: "/gfx/hogmobile-dark-front-wheels.png")).className("animate-bounce-wheels")
-        HogImage(URL(string: "/gfx/hogmobile-dark-paw.png")).className("animate-bounce-paw")
-        HogImage(URL(string: "/gfx/hogmobile-dark-headlights.png")).className("animate-bounce-car")
-      }
-      .hidden()
-      .display(.block, condition: .dark)
-    }
-    .position(.relative)
-    .frame(width: 200, height: 150)
-    .frame(width: 400, height: 300, condition: .startingAt(.medium))
-    .className("animate-drive-car")
   }
 }
