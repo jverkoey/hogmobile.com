@@ -27,7 +27,7 @@ struct ThankYou: View {
             .textColor(.rose, darkness: 400, condition: .dark)
         }
 
-        Link(URL(string: "https://www.threads.net/intent/post?text=I just signed up for Hog Mobile beta! Check it out https://hogmobile.com/")) {
+        Link(URL(string: "https://www.threads.net/intent/post?text=I just signed up for Hog Mobile beta! It's a new third party PostHog mobile client — check it out https://hogmobile.com/")) {
           Span("Share the love on Threads")
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
