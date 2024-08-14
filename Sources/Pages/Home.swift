@@ -24,6 +24,7 @@ struct Home: View {
               .fontSize(.large)
               .padding(.vertical, 8)
               .padding(.horizontal, 16)
+              .border(Color(.rose, darkness: 300), width: 1)
               .outline(style: .none, condition: .focus)
               .ring(Color(.rose, darkness: 400), width: 4, condition: .focus)
               .cornerRadius(.extraLarge)
