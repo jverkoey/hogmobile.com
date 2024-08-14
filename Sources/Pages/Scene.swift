@@ -29,7 +29,7 @@ struct Scene<Content: View>: View {
       description: description,
       backgroundColor: Color(.sky, darkness: 100),
       darkModeBackgroundColor: Color(.sky, darkness: 950),
-      additionalStylesheets: additionalStylesheets
+      additionalStylesheets: additionalStylesheets + [URL(string: "/css/parallax.css")]
     ) {
       Div {
         if showsFireworks {
@@ -79,16 +79,36 @@ struct Scene<Content: View>: View {
 
         // The ground
         Div {
-          // The hog mobile
           Div {
-            HogMobile()
+            Div {}.className("shape circle")
+              .background(.green, darkness: 600)
+              .background(.green, darkness: 950, condition: .dark)
+            Div {}.className("shape circle")
+              .background(.green, darkness: 500)
+              .background(.green, darkness: 900, condition: .dark)
+            Div {}.className("shape circle")
+              .background(.green, darkness: 400)
+              .background(.green, darkness: 800, condition: .dark)
+            Div {}.className("shape circle")
+              .background(.green, darkness: 300)
+              .background(.green, darkness: 700, condition: .dark)
+            Div {}.className("shape circle")
+              .background(.green, darkness: 300)
+              .background(.green, darkness: 700, condition: .dark)
           }
-          .position(.absolute)
-          .placement(left: 0.5, top: 0)
-          .offset(x: -0.5, y: -0.5)
+          Div {
+            // The hog mobile
+            Div {
+              HogMobile()
+            }
+            .position(.absolute)
+            .placement(left: 0.5, top: 0)
+            .offset(x: -0.5, y: -0.5)
+          }
+          .frame(width: .full, height: .full)
+          .background(.slate, darkness: 400)
+          .background(.slate, darkness: 700, condition: .dark)
         }
-        .background(.slate, darkness: 400)
-        .background(.slate, darkness: 700, condition: .dark)
         .frame(width: .full)
         .className("h-[25lvh]")
         .position(.relative)
