@@ -43,29 +43,6 @@ struct Scene<Content: View>: View {
         }
         Container {
           VStack(alignment: .center, spacing: 16) {
-            H1("Hog Mobile")
-              .fontSize(.sixXLarge)
-              .fontSize(.nineXLarge, condition: .startingAt(.medium))
-              .fontWeight(.black)
-              .fontDesign("rounded")
-              .textColor(.rose, darkness: 500)
-              .textColor(.rose, darkness: 400, condition: .dark)
-              .className("text-extrude shadow-rose-900")
-              .className("md:text-extrude-lg")
-              .fontLeading(.tight)
-
-            Paragraph {
-              Link("PostHog", destination: URL(string: "https://posthog.com"))
-                .underline(condition: .hover)
-              DOMString(" analytics on the go!")
-            }
-            .fontSize(.extraExtraLarge)
-            .fontSize(.fiveXLarge, condition: .startingAt(.medium))
-            .fontWeight(.black)
-            .fontDesign("rounded")
-            .textColor(.rose, darkness: 500)
-            .textColor(.rose, darkness: 400, condition: .dark)
-
             content()
           }
           .flexGap(.y, width: 48, condition: .startingAt(.medium))
@@ -102,7 +79,7 @@ struct Scene<Content: View>: View {
               HogMobile()
             }
             .position(.absolute)
-            .placement(left: 0.5, top: 0)
+            .placement(left: 0.333, top: 0)
             .offset(x: -0.5, y: -0.5)
           }
           .frame(width: .full, height: .full)
@@ -113,6 +90,7 @@ struct Scene<Content: View>: View {
         .frame(width: .full)
         .className("h-[25lvh]")
         .position(.relative)
+
       }
     }
   }

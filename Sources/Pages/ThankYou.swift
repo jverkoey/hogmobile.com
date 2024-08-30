@@ -9,6 +9,8 @@ struct ThankYou: View {
       description: "Thank you for signing up for the Hog Mobile beta!",
       showsFireworks: true
     ) {
+      Hero()
+
       VStack(alignment: .center, spacing: 32) {
         VStack(alignment: .center) {
           Paragraph("Thank you!")

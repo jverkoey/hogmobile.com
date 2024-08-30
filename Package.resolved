@@ -7,7 +7,7 @@
       "location" : "https://github.com/jverkoey/slipstream.git",
       "state" : {
         "branch" : "main",
-        "revision" : "5e8ce5bbb7fc36378700352b65214c91588bafa3"
+        "revision" : "a41d40e3037996ded90f5a5cc6831eadaa872dba"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/apple/swift-markdown.git",
       "state" : {
         "branch" : "main",
-        "revision" : "d21714073e0d16ba78eebdf36724863afc36871d"
+        "revision" : "2c126ce9fa33fc8b48258ee27ab51b33989161a3"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/scinfu/SwiftSoup.git",
       "state" : {
-        "revision" : "e2d11208519549c2e5798d70190472045633f22f",
-        "version" : "2.7.3"
+        "revision" : "3c2c7e1e72b8abd96eafbae80323c5c1e5317437",
+        "version" : "2.7.5"
       }
     }
   ],
