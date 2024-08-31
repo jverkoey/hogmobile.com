@@ -6,7 +6,7 @@ struct Hero: View {
   var body: some View {
     H1("Hog Mobile")
       .fontSize(.sixXLarge)
-      .fontSize(.eightXLarge, condition: .startingAt(.medium))
+      .fontSize(.nineXLarge, condition: .startingAt(.medium))
       .fontWeight(.black)
       .fontDesign("rounded")
       .textColor(.rose, darkness: 500)
@@ -21,7 +21,7 @@ struct Hero: View {
       DOMString(" analytics on the go!")
     }
     .fontSize(.extraExtraLarge)
-    .fontSize(.fourXLarge, condition: .startingAt(.medium))
+    .fontSize(.fiveXLarge, condition: .startingAt(.medium))
     .fontWeight(.black)
     .fontDesign("rounded")
     .textColor(.rose, darkness: 500)
