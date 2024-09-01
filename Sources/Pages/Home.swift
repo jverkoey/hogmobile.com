@@ -65,66 +65,77 @@ struct Home: View {
       Div {
         Container {
           VStack(alignment: .center, spacing: 64) {
-            HStack(spacing: 16) {
-              Picture {
-                Source(URL(string: "/gfx/screenshots/dashboards.dark.png"), colorScheme: .dark)
-                Source(URL(string: "/gfx/screenshots/dashboards.light.png"), colorScheme: .light)
-                Image(URL(string: "/gfx/screenshots/dashboards.light.png"))
-                  .frame(width: 300)
-                  .frame(width: 393, condition: .desktop)
+            ResponsiveStack(spacing: 16) {
+              let text = VStack(alignment: .center) {
+                Text("PostHog widgets")
+                  .fontSize(.extraExtraExtraLarge)
+                  .fontSize(.fourXLarge, condition: .desktop)
+                  .fontWeight(.heavy)
+                Text("Wherever you want them.")
+                Text("However you want them.")
               }
-              VStack(alignment: .center, spacing: 32) {
-                VStack(alignment: .center) {
-                  Text("PostHog widgets")
-                    .fontSize(.extraLarge)
-                    .fontSize(.fourXLarge, condition: .desktop)
-                    .fontWeight(.heavy)
-                  Text("Wherever you want them.")
-                  Text("However you want them.")
-                }
                 .fontWeight(.bold)
                 .fontDesign("rounded")
                 .textColor(.zinc, darkness: 950)
                 .textColor(.zinc, darkness: 100, condition: .dark)
-                .fontSize(.base)
+                .fontSize(.extraLarge)
                 .fontSize(.extraExtraLarge, condition: .desktop)
+
+              text
+                .hidden(condition: .desktop)
+
+              Picture {
+                Source(URL(string: "/gfx/screenshots/dashboards.dark.png"), colorScheme: .dark)
+                Source(URL(string: "/gfx/screenshots/dashboards.light.png"), colorScheme: .light)
+                Image(URL(string: "/gfx/screenshots/dashboards.light.png"))
+                  .frame(width: 393)
+              }
+              VStack(alignment: .center, spacing: 32) {
+                text
+                  .hidden(condition: .mobileOnly)
 
                 Picture {
                   Source(URL(string: "/gfx/widgets/widget.world.dark.png"), colorScheme: .dark)
                   Source(URL(string: "/gfx/widgets/widget.world.light.png"), colorScheme: .light)
                   Image(URL(string: "/gfx/widgets/widget.world.light.png"))
-                    .frame(width: 350)
+                    .frame(width: 300)
+                    .frame(width: 350, condition: .desktop)
                 }
 
                 Image(URL(string: "/gfx/screenshots/widgets.customization.png"))
-                  .frame(width: 393)
+                  .frame(width: 300)
+                  .frame(width: 393, condition: .desktop)
               }
             }
+            .alignItems(.center)
             .flexGap(.x, width: 32, condition: .desktop)
-            HStack(spacing: 32) {
+
+            ResponsiveStack(spacing: 32) {
+              let filterImage = Picture {
+                Source(URL(string: "/gfx/screenshots/feed.filter.dark.png"), colorScheme: .dark)
+                Source(URL(string: "/gfx/screenshots/feed.filter.light.png"), colorScheme: .light)
+                Image(URL(string: "/gfx/screenshots/feed.filter.light.png"))
+                  .frame(width: 350)
+              }
+
               VStack(alignment: .center, spacing: 32) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                   Text("Unified feed")
-                    .fontSize(.extraLarge)
+                    .fontSize(.extraExtraExtraLarge)
                     .fontSize(.fourXLarge, condition: .desktop)
                     .fontWeight(.heavy)
                   Text("Sip the firehose")
                   Text("...or tune filters to your focus")
                 }
-                .alignItems(.center, condition: .desktop)
                 .fontWeight(.bold)
                 .fontDesign("rounded")
                 .textColor(.zinc, darkness: 950)
                 .textColor(.zinc, darkness: 100, condition: .dark)
-                .fontSize(.base)
+                .fontSize(.extraLarge)
                 .fontSize(.extraExtraLarge, condition: .desktop)
 
-                Picture {
-                  Source(URL(string: "/gfx/screenshots/feed.filter.dark.png"), colorScheme: .dark)
-                  Source(URL(string: "/gfx/screenshots/feed.filter.light.png"), colorScheme: .light)
-                  Image(URL(string: "/gfx/screenshots/feed.filter.light.png"))
-                    .frame(width: 350)
-                }
+                filterImage
+                  .hidden(condition: .mobileOnly)
               }
               Picture {
                 Source(URL(string: "/gfx/screenshots/feed.dark.png"), colorScheme: .dark)
@@ -132,7 +143,10 @@ struct Home: View {
                 Image(URL(string: "/gfx/screenshots/feed.light.png"))
                   .frame(width: 393)
               }
+              filterImage
+                .hidden(condition: .desktop)
             }
+            .alignItems(.center)
           }
           .padding(.bottom, 32)
         }
