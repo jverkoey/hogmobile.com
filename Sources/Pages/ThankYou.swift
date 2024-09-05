@@ -14,7 +14,7 @@ struct ThankYou: View {
     ) {
       DrivingScene(showsFireworks: true, skyHeight: 80, groundHeight: 20) {
         VStack(alignment: .center, spacing: 32) {
-          VStack(alignment: .center) {
+          VStack(alignment: .center, spacing: 32) {
             Paragraph("Thank you!")
               .fontSize(.large)
               .fontSize(.extraExtraLarge, condition: .startingAt(.medium))
@@ -22,7 +22,28 @@ struct ThankYou: View {
               .fontDesign("rounded")
               .textColor(.rose, darkness: 500)
               .textColor(.rose, darkness: 400, condition: .dark)
-            Paragraph("You'll get an email when Hog Mobile is ready to test.")
+            Link(URL(string: "https://testflight.apple.com/join/4HJFx8AA")) {
+              Button {
+                Span("Open TestFlight")
+                  .padding(.horizontal, 16)
+                  .padding(.vertical, 8)
+                  .display(.block)
+                  .background(.rose, darkness: 500)
+                  .background(.rose, darkness: 400, condition: .dark)
+                  .offset(y: -8)
+                  .offset(y: -6, condition: .hover)
+                  .offset(y: -2, condition: .active)
+                  .animation(.easeInOut, condition: .hover + .active)
+                  .cornerRadius(.extraLarge)
+              }
+              .fontSize(.large)
+              .fontWeight(.bold)
+              .fontDesign("rounded")
+              .textColor(.white)
+              .background(.rose, darkness: 900)
+              .cornerRadius(.extraLarge)
+              .animation(.easeOut, condition: .active)
+            }
               .padding(.horizontal, 64, condition: .mobileOnly)
               .fontSize(.large)
               .fontWeight(.bold)
