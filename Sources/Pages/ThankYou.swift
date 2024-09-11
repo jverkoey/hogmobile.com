@@ -10,7 +10,10 @@ struct ThankYou: View {
       description: "Thank you for signing up for the Hog Mobile beta!",
       backgroundColor: Color(.sky, darkness: 100),
       darkModeBackgroundColor: Color(.sky, darkness: 950),
-      additionalStylesheets: [URL(string: "/css/parallax.css")]
+      additionalStylesheets: [
+        URL(string: "/css/parallax.css"),
+        URL(string: "/css/fireworks.css"),
+      ]
     ) {
       DrivingScene(showsFireworks: true, skyHeight: 80, groundHeight: 20) {
         VStack(alignment: .center, spacing: 32) {
